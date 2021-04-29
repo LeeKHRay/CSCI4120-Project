@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Weapon weapon;
     private AudioSource audioSource;
+    private bool isReloading = false;
 
     void Start()
     {
@@ -70,10 +71,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // reload
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && !isReloading)
             {
-                animator.SetTrigger("Reload");
-                weapon.Reload();
+                StartCoroutine("Reload");
             }
         }        
     }
@@ -105,6 +105,16 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce);
             }
         }
+    }
+
+    private IEnumerator Reload()
+    {
+        isReloading = true;
+        animator.SetTrigger("Reload");
+        weapon.Clear();
+        yield return new WaitForSeconds(2.667f); // wait until reload animation finishes
+        weapon.Reload();
+        isReloading = false;
     }
 
     private void SwitchCamera()

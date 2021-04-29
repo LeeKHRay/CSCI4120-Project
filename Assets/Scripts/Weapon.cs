@@ -51,15 +51,13 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void Reload()
-    {
-        StartCoroutine(ReloadCoroutine());
-    }
-
-    private IEnumerator ReloadCoroutine()
+    public void Clear()
     {
         ammo = 0;
-        yield return new WaitForSeconds(2.667f); // wait until reload animation finishes
+    }
+
+    public void Reload()
+    {
         ammo = maxAmmo;
     }
 
