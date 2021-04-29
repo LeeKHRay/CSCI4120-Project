@@ -13,6 +13,7 @@ public class BlackHole : MonoBehaviour
     private PlayerController playerController;
     private VisualEffect blackHole;
     private VisualEffect explosion;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class BlackHole : MonoBehaviour
         playerController = target.GetComponent<PlayerController>();
         blackHole = transform.GetChild(0).GetComponent<VisualEffect>();
         explosion = transform.GetChild(1).GetComponent<VisualEffect>();
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine("Explode");
     }
@@ -27,7 +29,7 @@ public class BlackHole : MonoBehaviour
     void Update()
     {
         Vector3 heading = target.position - transform.position + target.up;
-        playerController.rb.AddForce(-heading.normalized * attractiveForce); // attract player
+        playerController.AddForce(-heading.normalized * attractiveForce); // attract player
     }
 
     private IEnumerator Explode()
@@ -39,6 +41,7 @@ public class BlackHole : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         blackHole.gameObject.SetActive(false);
         explosion.Play();
+        audioSource.Play();
         Destroy(gameObject, 1.0f);
     }
 
@@ -55,7 +58,7 @@ public class BlackHole : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false;
             playerController.Damage(damage);
             Vector3 forceDir = new Vector3(-collision.contacts[0].normal.x, 0, -collision.contacts[0].normal.z);
-            playerController.rb.AddForce(forceDir * explosiveForce);
+            playerController.AddForce(forceDir * explosiveForce);
             Destroy(gameObject, 1.0f);
         }
     }

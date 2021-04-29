@@ -5,21 +5,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Shield : MonoBehaviour
 {
     public string[] collisionTag;
     public float rotateSpeed = 0.1f;
+    public int maxDurability = 50;
     public int durability = 50;
+    public int restoreTime = 10;
     public Boss boss;
+    public ShieldDurabilityBar shieldDurabilityBar;
 
     private float hitTime;
+    private bool enhanced = false;
     private Material mat;
+    private VisualEffect ve;
 
     void Start()
     {
         mat = GetComponent<Renderer>().sharedMaterial;
         mat.SetFloat("_HitTime", 0);
+        ve = GetComponent<VisualEffect>();
     }
 
     void Update()
@@ -66,5 +73,22 @@ public class Shield : MonoBehaviour
             hitTime = 300;
             mat.SetFloat("_HitTime", hitTime);
         }
+    }
+
+    public void Restore()
+    {
+        durability = maxDurability;
+        if (enhanced)
+        {
+            ve.Play();
+        }
+    }
+
+    public void Enhance()
+    {
+        maxDurability = 100;
+        restoreTime = 5;
+        shieldDurabilityBar.Enhance();
+        enhanced = true;
     }
 }

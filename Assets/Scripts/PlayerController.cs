@@ -13,16 +13,19 @@ public class PlayerController : MonoBehaviour
     public int lifePoint = 500;
     public ParticleSystem thruster;
     public ParticleSystem explosion;
-    public Rigidbody rb;
+    public ParticleSystem smoke;
 
+    private Rigidbody rb;
     private Animator animator;
     private Weapon weapon;
+    private AudioSource audioSource;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
+        audioSource = GetComponent<AudioSource>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -142,13 +145,26 @@ public class PlayerController : MonoBehaviour
             lifePoint -= damage;
             if (lifePoint <= 0)
             {
-                mainCam.GetComponent<Camera>().enabled = true;
-                aimingCam.GetComponent<Camera>().enabled = false;
-                crosshair.SetActive(false);
-                explosion.Play();
-                animator.SetTrigger("Dead");
+                StartCoroutine("Die");
             }
         }
+    }
+
+    private IEnumerator Die()
+    {
+        mainCam.GetComponent<Camera>().enabled = true;
+        aimingCam.GetComponent<Camera>().enabled = false;
+        crosshair.SetActive(false);
+        animator.SetTrigger("Dead");
+        yield return new WaitForSeconds(1.0f);
+        explosion.Play();
+        smoke.Play();
+        audioSource.Play();
+    }
+
+    public void AddForce(Vector3 force)
+    {
+        rb.AddForce(force);
     }
 
     void OnCollisionEnter(Collision collision)

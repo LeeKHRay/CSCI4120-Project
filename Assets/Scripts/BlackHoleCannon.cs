@@ -16,6 +16,7 @@ public class BlackHoleCannon : MonoBehaviour
     private Vector3 destination;
     private VisualEffect originTranslateVFX = null;
     private VisualEffect destinationTranslateVFX = null;
+    private AudioSource audioSource;
     private bool shouldAttack = false;
     private bool shouldReturn = false;
 
@@ -23,6 +24,7 @@ public class BlackHoleCannon : MonoBehaviour
     {
         meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
         flame = transform.GetChild(1).GetComponent<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -68,6 +70,7 @@ public class BlackHoleCannon : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         Instantiate(bullet, spawnPoint, bullet.transform.rotation);
+        audioSource.Play();
 
         yield return new WaitForSeconds(1.0f);
 

@@ -21,4 +21,9 @@ public class ShieldDurabilityBar : MonoBehaviour
         shieldDurabilityBar.value = shield.durability;
         transform.LookAt(transform.position - cam.forward, cam.up);
     }
+
+    public void Enhance()
+    {
+        shieldDurabilityBar.maxValue = 100;
+    }
 }

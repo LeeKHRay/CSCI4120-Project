@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public Transform bulletPos;
     public float shootForce = 1000f;
     public int maxAmmo = 20;
+    public AudioSource audioSource;
 
     private int ammo;
 
@@ -42,6 +43,11 @@ public class Weapon : MonoBehaviour
         {
             bulletObj = Instantiate(bullet, bulletPos.position, transform.rotation * bullet.transform.rotation);
             bulletObj.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce);
+        }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 

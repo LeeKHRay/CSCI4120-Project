@@ -8,6 +8,13 @@ public class EnergyBallCannon : MonoBehaviour
     public GameObject bullet;
     public float shootForce = 10f;
 
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         RotateCannon();
@@ -18,6 +25,7 @@ public class EnergyBallCannon : MonoBehaviour
         Debug.DrawLine(transform.position - transform.forward, -transform.forward * 1000, Color.blue);
         GameObject bulletObj = Instantiate(bullet, transform.position - transform.forward, transform.rotation * bullet.transform.rotation);
         bulletObj.GetComponent<Rigidbody>().AddForce(-transform.forward * shootForce);
+        audioSource.Play();
     }
 
     private void RotateCannon()

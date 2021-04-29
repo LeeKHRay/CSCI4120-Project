@@ -23,6 +23,8 @@ public class Boss : Minion
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
         StartCoroutine("AttackOrMove");
+        //StartCoroutine("EnergyBallCannonAttack");
+        //StartCoroutine("BlackHoleCannonAttack");
     }
 
     // Update is called once per frame
@@ -148,9 +150,10 @@ public class Boss : Minion
 
     public void Return()
     {
-        // create shield
-        shield.durability = 50;
+        // create enhanced shield
         shield.gameObject.SetActive(true);
+        shield.Enhance();
+        shield.Restore();
         rb.isKinematic = true; // set isKinematic to true to ensure collision point on shield is not shifted
         
         escaped = false;
@@ -177,6 +180,7 @@ public class Boss : Minion
         yield return new WaitForSeconds(1.0f);
         explosion.Play();
         smoke.Play();
+        audioSource.Play();
         Destroy(blackHoleCannon.gameObject, 1.0f);
         Destroy(gameObject, 1.0f);
     }
@@ -189,13 +193,13 @@ public class Boss : Minion
     private IEnumerator CreateShield()
     {
         rb.isKinematic = false;
-        for (float i = 0; i < 10; i += 0.2f)
+        for (float i = 0; i < shield.restoreTime; i += 0.2f)
         {
-            shield.durability += 1;
+            shield.durability += (int) (shield.maxDurability / shield.restoreTime * 0.2f);
             yield return new WaitForSeconds(0.2f);
         }
-        shield.durability = 50;
         shield.gameObject.SetActive(true);
+        shield.Restore();
         rb.isKinematic = true;
     }
 

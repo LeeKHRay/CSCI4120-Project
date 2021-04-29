@@ -15,6 +15,7 @@ public class EnergyBall : MonoBehaviour
     private Rigidbody rigid;
     private VisualEffect energy;
     private VisualEffect explosion;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnergyBall : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         energy = transform.GetChild(0).GetComponent<VisualEffect>();
         explosion = transform.GetChild(1).GetComponent<VisualEffect>();
+        audioSource = GetComponent<AudioSource>();
 
         transform.LookAt(target);
         currDir = transform.forward;
@@ -43,8 +45,9 @@ public class EnergyBall : MonoBehaviour
     {
         // explode after 10 seconds
         yield return new WaitForSeconds(10f);
-        energy.gameObject.SetActive(false);
+        energy.playRate = 500;
         explosion.Play();
+        audioSource.Play();
         Destroy(gameObject, 1.0f);
     }
 
@@ -53,22 +56,30 @@ public class EnergyBall : MonoBehaviour
         energy.playRate = 500;
         energy.Stop();
         explosion.Play();
+        audioSource.Play();
         rigid.velocity = Vector3.zero;
         GetComponent<Collider>().enabled = false;
+
+        Vector3 forceDir = new Vector3(-collision.contacts[0].normal.x, 0, -collision.contacts[0].normal.z);
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<PlayerController>().Damage(damage);
+            PlayerController player = collision.collider.GetComponent<PlayerController>();
+            player.Damage(damage);
+            player.AddForce(forceDir * explosiveForce);
         }
         else if (collision.collider.tag == "Minion")
         {
-            collision.collider.GetComponent<Minion>().Damage(damage);
+            Minion minion = collision.collider.GetComponent<Minion>();
+            minion.Damage(damage);
+            minion.AddForce(forceDir * explosiveForce);
         }
         else if (collision.collider.tag == "Boss")
         {
-            collision.collider.GetComponent<Boss>().Damage(damage);
+            Boss boss = collision.collider.GetComponent<Boss>();
+            boss.Damage(damage);
+            boss.AddForce(forceDir * explosiveForce);
         }
-        Vector3 forceDir = new Vector3(-collision.contacts[0].normal.x, 0, -collision.contacts[0].normal.z);
-        target.GetComponent<PlayerController>().rb.AddForce(forceDir * explosiveForce);
+
         Destroy(gameObject, 1.0f);
     }
 }

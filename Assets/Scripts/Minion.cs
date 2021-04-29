@@ -19,6 +19,7 @@ public class Minion : MonoBehaviour
     protected Weapon weapon;
     protected NavMeshAgent agent;
     protected Transform target;
+    protected AudioSource audioSource;
     protected int state = 0;
 
     private Vector3 prevDir;
@@ -30,6 +31,7 @@ public class Minion : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         prevDir = transform.forward * 10;
@@ -153,7 +155,13 @@ public class Minion : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         explosion.Play();
         smoke.Play();
+        audioSource.Play();
         Destroy(gameObject, 1.0f);
+    }
+
+    public void AddForce(Vector3 force)
+    {
+        rb.AddForce(force);
     }
 
     void OnCollisionEnter(Collision collision)
