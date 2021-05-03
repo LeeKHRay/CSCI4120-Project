@@ -19,12 +19,12 @@ public class Boss : Minion
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        prevDir = transform.forward * 10;
 
         StartCoroutine("AttackOrMove");
-        //StartCoroutine("EnergyBallCannonAttack");
-        //StartCoroutine("BlackHoleCannonAttack");
     }
 
     // Update is called once per frame
@@ -34,6 +34,7 @@ public class Boss : Minion
         Vector3 velocity = transform.InverseTransformDirection(agent.desiredVelocity); // convert velocity from world coordinates to local
         animator.SetFloat("ZSpeed", NormalizedSpeed(velocity.z));
         animator.SetFloat("XSpeed", NormalizedSpeed(velocity.x));
+        animator.SetFloat("TurningSpeed", AngularVelocity() * 2);
 
         switch (state) {
             case 0:

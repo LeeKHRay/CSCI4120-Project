@@ -16451,6 +16451,7 @@ MonoBehaviour:
   aimingCam: {fileID: 5942069600237212737}
   crosshair: {fileID: 0}
   lifePoint: 300
+  energyCellNum: 3
   thruster: {fileID: 1068352673273296084}
   explosion: {fileID: 1068352673720718288}
   smoke: {fileID: 1068352674707520634}
@@ -17381,7 +17382,6 @@ GameObject:
   - component: {fileID: 5942069600237212737}
   - component: {fileID: 5942069600237212860}
   - component: {fileID: 5942069600237212739}
-  - component: {fileID: 5942069600237212738}
   m_Layer: 8
   m_Name: AimingCamera
   m_TagString: Untagged
@@ -17454,14 +17454,6 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5942069600237212736}
   m_Enabled: 1
---- !u!81 &5942069600237212738
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5942069600237212736}
-  m_Enabled: 0
 --- !u!1 &5942069601054453821
 GameObject:
   m_ObjectHideFlags: 0

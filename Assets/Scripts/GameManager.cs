@@ -9,15 +9,15 @@ public class GameManager : MonoBehaviour
     public Transform bossReturnPoint;
     public Boss boss;
 
-    private ParticleSystem[][] particleSystems;
     private bool spawned = false;
-    private GameObject[] spawnedMinions;
     private bool bossInScene = true;
+    private GameObject[] spawnedMinions;
+    private ParticleSystem[][] particleSystems;
 
     // Start is called before the first frame update
     void Start()
     {
-        particleSystems = new ParticleSystem[5][];
+        particleSystems = new ParticleSystem[spawnPoints.Length + 1][];
 
         particleSystems[0] = new ParticleSystem[2];
         particleSystems[0][0] = bossReturnPoint.GetChild(0).GetComponent<ParticleSystem>();

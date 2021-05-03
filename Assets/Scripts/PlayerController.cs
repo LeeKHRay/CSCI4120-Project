@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform aimingCam;
     public GameObject crosshair;
     public int lifePoint = 500;
+    public int energyCellNum = 3;
     public ParticleSystem thruster;
     public ParticleSystem explosion;
     public ParticleSystem smoke;
@@ -71,8 +72,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // reload
-            if (Input.GetKeyDown(KeyCode.R) && !isReloading)
+            if (Input.GetKeyDown(KeyCode.R) && !isReloading && energyCellNum > 0)
             {
+                energyCellNum--;
                 StartCoroutine("Reload");
             }
         }        
@@ -170,6 +172,16 @@ public class PlayerController : MonoBehaviour
         explosion.Play();
         smoke.Play();
         audioSource.Play();
+    }
+
+    public bool CanGetEnergyCell()
+    {
+        return energyCellNum < 3;
+    }
+
+    public void GetEnergyCell()
+    {
+        energyCellNum++;
     }
 
     public void AddForce(Vector3 force)

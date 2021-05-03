@@ -9,12 +9,14 @@ public class UserInterface : MonoBehaviour
     public Weapon weapon;
     public Slider lifePointBar;
     public Slider laserEnergyBar;
+    public RawImage[] energyCellImages;
     public Color[] colors;
 
     private Image lifePoint;
     private Text lifePointText;
     private Image energy;
     private Text energyText;
+    private int energyCellNum = 3;
 
     void Start()
     {
@@ -29,8 +31,25 @@ public class UserInterface : MonoBehaviour
         lifePointBar.value = player.lifePoint;
         lifePointText.text = player.lifePoint + "/300";
 
-        laserEnergyBar.value = weapon.ammoNum();
-        energyText.text = weapon.ammoInfo();
+        laserEnergyBar.value = weapon.AmmoNum();
+        energyText.text = weapon.AmmoInfo();
+
+        // update energy cell images
+        if (energyCellNum != player.energyCellNum)
+        {
+            energyCellNum = player.energyCellNum;
+            for (int i = 0; i < 3; i++)
+            {
+                if (i < energyCellNum)
+                {
+                    energyCellImages[i].enabled = true;
+                }
+                else
+                {
+                    energyCellImages[i].enabled = false;
+                }
+            }
+        }
     }
 
     public void ChangeLifePointColor()

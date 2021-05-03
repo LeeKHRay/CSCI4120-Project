@@ -66,12 +66,12 @@ public class Weapon : MonoBehaviour
         return ammo > 0;
     }
 
-    public int ammoNum()
+    public int AmmoNum()
     {
         return ammo;
     }
 
-    public string ammoInfo()
+    public string AmmoInfo()
     {
         return ammo + "/" + maxAmmo;
     }

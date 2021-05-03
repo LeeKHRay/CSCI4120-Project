@@ -21,8 +21,7 @@ public class Minion : MonoBehaviour
     protected Transform target;
     protected AudioSource audioSource;
     protected int state = 0;
-
-    private Vector3 prevDir;
+    protected Vector3 prevDir;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +44,7 @@ public class Minion : MonoBehaviour
         agent.SetDestination(target.position);
         Vector3 velocity = transform.InverseTransformDirection(agent.desiredVelocity); // convert velocity from world coordinates to local
         animator.SetFloat("Speed", NormalizedSpeed(velocity.magnitude));
-        animator.SetFloat("TurningSpeed", AngularVelocity());
+        animator.SetFloat("TurningSpeed", AngularVelocity() * 2);
 
         switch (state) {
             case 0:
@@ -117,7 +116,7 @@ public class Minion : MonoBehaviour
         return speed / agent.speed;
     }
 
-    private float AngularVelocity()
+    protected float AngularVelocity()
     {
         Vector3 currDir = transform.forward * 10;
         float angularVelocity = Vector3.Angle(currDir, prevDir) / Time.deltaTime;

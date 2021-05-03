@@ -52,6 +52,7 @@ public class BlackHole : MonoBehaviour
             blackHole.playRate = 500;
             blackHole.Stop();
             explosion.Play();
+            audioSource.Play();
 
             attractiveForce = 0;
             GetComponent<Collider>().enabled = false;
