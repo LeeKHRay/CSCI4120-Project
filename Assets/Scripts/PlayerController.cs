@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem thruster;
     public ParticleSystem explosion;
     public ParticleSystem smoke;
+    public ParticleSystem healingEffect;
 
+    private int maxLifePoint;
     private Rigidbody rb;
     private Animator animator;
     private Weapon weapon;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        maxLifePoint = lifePoint;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
@@ -182,6 +185,25 @@ public class PlayerController : MonoBehaviour
     public void GetEnergyCell()
     {
         energyCellNum++;
+    }
+
+    public void Heal()
+    {
+        StartCoroutine("HealRoutine");
+    }
+
+    private IEnumerator HealRoutine()
+    {
+        healingEffect.Play();
+        for (int i = 0; i < 10; i++)
+        {
+            if (lifePoint < maxLifePoint)
+            {
+                lifePoint += 5;
+            }
+            yield return new WaitForSeconds(1);
+        }
+        healingEffect.Stop();
     }
 
     public void AddForce(Vector3 force)
