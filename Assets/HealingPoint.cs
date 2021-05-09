@@ -22,11 +22,6 @@ public class HealingPoint : MonoBehaviour
         Float();
     }
 
-    private void Spin()
-    {
-        transform.Rotate(Vector3.up * 150 * Time.deltaTime);
-    }
-
     private void Float()
     {
         Vector3 tempPos = posOffset;
@@ -38,8 +33,7 @@ public class HealingPoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            player.Heal();
+            other.GetComponent<PlayerController>().Heal();
             Destroy(gameObject);
         }
     }

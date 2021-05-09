@@ -13,26 +13,20 @@ public class UserInterface : MonoBehaviour
     public Color[] colors;
 
     private Image lifePoint;
-    private Text lifePointText;
     private Image energy;
-    private Text energyText;
     private int energyCellNum = 3;
 
     void Start()
     {
         lifePoint = lifePointBar.transform.GetChild(2).GetComponent<Image>();
-        lifePointText = lifePointBar.transform.GetChild(3).GetComponent<Text>();
         energy = laserEnergyBar.transform.GetChild(2).GetComponent<Image>();
-        energyText = laserEnergyBar.transform.GetChild(3).GetComponent<Text>();
     }
 
     void Update()
     {
         lifePointBar.value = player.lifePoint;
-        lifePointText.text = player.lifePoint + "/300";
 
         laserEnergyBar.value = weapon.AmmoNum();
-        energyText.text = weapon.AmmoInfo();
 
         // update energy cell images
         if (energyCellNum != player.energyCellNum)

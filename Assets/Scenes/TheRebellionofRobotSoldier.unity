@@ -195,6 +195,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161637614}
   m_CullTransparentMesh: 0
+--- !u!4 &183197030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8088298577766451775, guid: 690867fdbdce861499f4295f8e6e9b1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8088298577711916863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &229093653
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,6 +4955,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!4 &235461479 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8088298577766451775, guid: 690867fdbdce861499f4295f8e6e9b1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 807550005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &249245627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5033,6 +5045,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb47f9290a610c149b1716b9c6fe8d8a, type: 3}
+--- !u!4 &343783268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8088298577766451775, guid: 690867fdbdce861499f4295f8e6e9b1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890775228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &345552221
 GameObject:
   m_ObjectHideFlags: 0
@@ -10023,6 +10041,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d3b0df75dcf734393f5f90d6a4cc3d, type: 3}
+--- !u!4 &581436300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8088298577766451775, guid: 690867fdbdce861499f4295f8e6e9b1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1233866591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &581545636
 GameObject:
   m_ObjectHideFlags: 0
@@ -10375,7 +10399,7 @@ RectTransform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1846256080}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -10511,84 +10535,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933024011}
   m_CullTransparentMesh: 0
---- !u!1 &989946473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 989946474}
-  - component: {fileID: 989946476}
-  - component: {fileID: 989946475}
-  m_Layer: 5
-  m_Name: LifePointText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &989946474
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989946473}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1030291956}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &989946475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989946473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 300/300
---- !u!222 &989946476
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989946473}
-  m_CullTransparentMesh: 0
 --- !u!1 &1030291955
 GameObject:
   m_ObjectHideFlags: 0
@@ -10620,7 +10566,6 @@ RectTransform:
   - {fileID: 1158417903}
   - {fileID: 1579499356}
   - {fileID: 933024012}
-  - {fileID: 989946474}
   - {fileID: 1727627266}
   m_Father: {fileID: 1785915623}
   m_RootOrder: 1
@@ -10865,7 +10810,7 @@ GameObject:
   - component: {fileID: 1176610407}
   - component: {fileID: 1176610406}
   m_Layer: 5
-  m_Name: Energy
+  m_Name: LaserEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11037,7 +10982,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 3350637900433275332, guid: cb47f9290a610c149b1716b9c6fe8d8a,
     type: 3}
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 183197030}
+  - {fileID: 581436300}
+  - {fileID: 235461479}
+  - {fileID: 343783268}
   bossReturnPoint: {fileID: 594204952}
   boss: {fileID: 148624616167181865}
 --- !u!4 &1308017986
@@ -11285,84 +11234,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493304115}
   m_CullTransparentMesh: 0
---- !u!1 &1500567593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1500567594}
-  - component: {fileID: 1500567596}
-  - component: {fileID: 1500567595}
-  m_Layer: 5
-  m_Name: EnergyText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1500567594
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500567593}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1846256080}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1500567595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500567593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 20/20
---- !u!222 &1500567596
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500567593}
-  m_CullTransparentMesh: 0
 --- !u!1 &1579499355
 GameObject:
   m_ObjectHideFlags: 0
@@ -11541,7 +11412,7 @@ GameObject:
   - component: {fileID: 1727627268}
   - component: {fileID: 1727627267}
   m_Layer: 5
-  m_Name: LifePointBarIcon
+  m_Name: LifePointIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11559,7 +11430,7 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 1030291956}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -11945,7 +11816,6 @@ RectTransform:
   - {fileID: 385195000}
   - {fileID: 1103053801}
   - {fileID: 1176610405}
-  - {fileID: 1500567594}
   - {fileID: 816233729}
   m_Father: {fileID: 1785915623}
   m_RootOrder: 2
