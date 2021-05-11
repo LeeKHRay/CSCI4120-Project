@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("TurningSpeed", x);
 
             Vector3 camForward = Vector3.Scale(mainCam.forward, new Vector3(1, 0, 1)).normalized;
-            rb.velocity = (v * camForward + h * mainCam.right) * speed + transform.up * rb.velocity.y;
+            rb.velocity = Vector3.ClampMagnitude(v * camForward + h * mainCam.right, 1f) * speed + transform.up * rb.velocity.y;
             rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 80 * x * Time.fixedDeltaTime, 0));
 
             SetAimingCameraAngle(aimingCam.transform.eulerAngles.x - 80 * y * Time.fixedDeltaTime);

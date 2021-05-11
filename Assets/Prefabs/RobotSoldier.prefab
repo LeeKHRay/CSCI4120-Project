@@ -21259,7 +21259,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   jumpForce: 500
-  speed: 26
+  speed: 5
   mainCam: {fileID: 5942069601054453818}
   aimingCam: {fileID: 5942069600237212737}
   crosshair: {fileID: 0}
