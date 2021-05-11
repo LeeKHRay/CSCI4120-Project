@@ -16,7 +16,7 @@ public class Minion : MonoBehaviour
 
     protected Animator animator;
     protected Rigidbody rb;
-    protected Weapon weapon;
+    protected LaserGun laserGun;
     protected NavMeshAgent agent;
     protected Transform target;
     protected AudioSource audioSource;
@@ -28,7 +28,7 @@ public class Minion : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        weapon = GetComponent<Weapon>();
+        laserGun = GetComponent<LaserGun>();
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
 
@@ -84,7 +84,7 @@ public class Minion : MonoBehaviour
                 case 1:
                     transform.LookAt(target.position);
                     animator.SetTrigger("Shoot");
-                    weapon.Shoot();
+                    laserGun.Shoot(5);
                     yield return new WaitForSeconds(3.0f);
                     break;
 

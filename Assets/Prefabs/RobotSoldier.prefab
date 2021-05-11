@@ -21157,7 +21157,7 @@ GameObject:
   - component: {fileID: 5942069601216212175}
   - component: {fileID: 5942069601216212174}
   - component: {fileID: 4038544890021940185}
-  - component: {fileID: 4038544890021940187}
+  - component: {fileID: 2192083894451972375}
   - component: {fileID: 746096166}
   m_Layer: 8
   m_Name: RobotSoldier
@@ -21269,7 +21269,7 @@ MonoBehaviour:
   explosion: {fileID: 1068352673720718288}
   smoke: {fileID: 1068352674707520634}
   healingEffect: {fileID: 7471920257599153813}
---- !u!114 &4038544890021940187
+--- !u!114 &2192083894451972375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21278,14 +21278,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4038544890021940184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee0a0618da1e314480f7af2f8e2a2ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2310af1127598ea4489b0ccdfd997723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimingCam: {fileID: 5942069600237212860}
-  bullet: {fileID: 8862248273916990551, guid: f25c13dd6fedaac479a61588a69de0b3, type: 3}
-  bulletPos: {fileID: 5942069601070209931}
+  laser: {fileID: 8862248273916990551, guid: f25c13dd6fedaac479a61588a69de0b3, type: 3}
+  laserPos: {fileID: 5942069601070209931}
   shootForce: 150
-  maxAmmo: 20
+  maxEnergy: 20
   audioSource: {fileID: 1576694480}
 --- !u!82 &746096166
 AudioSource:

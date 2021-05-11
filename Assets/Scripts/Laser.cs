@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public int damage = 10;
     public ParticleSystem spark;
+    private int damage = 10;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("Vanish");
@@ -17,6 +16,11 @@ public class Laser : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         Destroy(gameObject);
+    }
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 
     private void OnCollisionEnter(Collision collision)

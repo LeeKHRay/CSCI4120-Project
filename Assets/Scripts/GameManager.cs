@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     private GameObject[] spawnedMinions;
     private ParticleSystem[][] particleSystems;
 
-    // Start is called before the first frame update
     void Start()
     {
         particleSystems = new ParticleSystem[spawnPoints.Length + 1][];
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (boss.lifePoint < 250 && bossInScene && !spawned)

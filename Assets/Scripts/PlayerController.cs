@@ -20,16 +20,16 @@ public class PlayerController : MonoBehaviour
     private int maxLifePoint;
     private Rigidbody rb;
     private Animator animator;
-    private Weapon weapon;
+    private LaserGun laserGun;
     private AudioSource audioSource;
-    private bool isReloading = false;
+    private bool isRecharging = false;
 
     void Start()
     {
         maxLifePoint = lifePoint;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        weapon = GetComponent<Weapon>();
+        laserGun = GetComponent<LaserGun>();
         audioSource = GetComponent<AudioSource>();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -68,17 +68,17 @@ public class PlayerController : MonoBehaviour
             }
 
             // shoot
-            if (animator.GetBool("Aiming") && Input.GetMouseButtonDown(0) && weapon.CanShoot())
+            if (animator.GetBool("Aiming") && Input.GetMouseButtonDown(0) && laserGun.CanShoot())
             {
                 animator.SetTrigger("Shoot");
-                weapon.Shoot();
+                laserGun.Shoot();
             }
 
-            // reload
-            if (Input.GetKeyDown(KeyCode.R) && !isReloading && energyCellNum > 0)
+            // recharge
+            if (Input.GetKeyDown(KeyCode.R) && !isRecharging && energyCellNum > 0)
             {
                 energyCellNum--;
-                StartCoroutine("Reload");
+                StartCoroutine("Recharge");
             }
         }        
     }
@@ -112,14 +112,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator Reload()
+    private IEnumerator Recharge()
     {
-        isReloading = true;
-        animator.SetTrigger("Reload");
-        weapon.Clear();
-        yield return new WaitForSeconds(2.667f); // wait until reload animation finishes
-        weapon.Reload();
-        isReloading = false;
+        isRecharging = true;
+        animator.SetTrigger("Recharge");
+        laserGun.Clear();
+        yield return new WaitForSeconds(2.667f); // wait until recharge animation finishes
+        laserGun.Recharge();
+        isRecharging = false;
     }
 
     private void SwitchCamera()
@@ -189,10 +189,10 @@ public class PlayerController : MonoBehaviour
 
     public void Heal()
     {
-        StartCoroutine("HealRoutine");
+        StartCoroutine("HealCoroutine");
     }
 
-    private IEnumerator HealRoutine()
+    private IEnumerator HealCoroutine()
     {
         healingEffect.Play();
         for (int i = 0; i < 10; i++)

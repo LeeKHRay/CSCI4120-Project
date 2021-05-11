@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UserInterface : MonoBehaviour
 {
     public PlayerController player;
-    public Weapon weapon;
+    public LaserGun laserGun;
     public Slider lifePointBar;
     public Slider laserEnergyBar;
     public RawImage[] energyCellImages;
@@ -26,7 +26,7 @@ public class UserInterface : MonoBehaviour
     {
         lifePointBar.value = player.lifePoint;
 
-        laserEnergyBar.value = weapon.AmmoNum();
+        laserEnergyBar.value = laserGun.GetEnergy();
 
         // update energy cell images
         if (energyCellNum != player.energyCellNum)

@@ -2,46 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class LaserGun : MonoBehaviour
 {
     public Camera aimingCam = null;
-    public GameObject bullet;
-    public Transform bulletPos;
+    public GameObject laser;
+    public Transform laserPos;
     public float shootForce = 1000f;
-    public int maxAmmo = 20;
+    public int maxEnergy = 20;
     public AudioSource audioSource;
 
-    private int ammo;
+    private int energy;
 
     void Start()
     {
-        ammo = maxAmmo;
+        energy = maxEnergy;
     }
 
-    public virtual void Shoot()
+    public virtual void Shoot(int damage = 10)
     {
         GameObject bulletObj;
         if (aimingCam != null) // for player
         {
             Vector3 dir;
-            bulletObj = Instantiate(bullet, bulletPos.position, aimingCam.transform.rotation * bullet.transform.rotation);
+            bulletObj = Instantiate(laser, laserPos.position, aimingCam.transform.rotation * laser.transform.rotation);
             RaycastHit hit;
             if (Physics.Raycast(aimingCam.transform.position, aimingCam.transform.forward, out hit, aimingCam.farClipPlane))
             {
-                dir = (hit.point - bulletPos.position).normalized;
+                dir = (hit.point - laserPos.position).normalized;
             }
             else
             {
                 Vector3 point = aimingCam.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, aimingCam.farClipPlane));
-                dir = (point - bulletPos.position).normalized;
+                dir = (point - laserPos.position).normalized;
             }
-            Debug.DrawLine(bulletPos.position, bulletPos.position + dir * 1000, Color.red);
+            Debug.DrawLine(laserPos.position, laserPos.position + dir * 1000, Color.red);
             bulletObj.GetComponent<Rigidbody>().AddForce(dir * shootForce);
-            ammo--;
+            energy--;
         }
         else // for enemy
         {
-            bulletObj = Instantiate(bullet, bulletPos.position, transform.rotation * bullet.transform.rotation);
+            bulletObj = Instantiate(laser, laserPos.position, transform.rotation * laser.transform.rotation);
+            bulletObj.GetComponent<Laser>().SetDamage(damage);
             bulletObj.GetComponent<Rigidbody>().AddForce(transform.forward * shootForce);
         }
 
@@ -53,26 +54,21 @@ public class Weapon : MonoBehaviour
 
     public void Clear()
     {
-        ammo = 0;
+        energy = 0;
     }
 
-    public void Reload()
+    public void Recharge()
     {
-        ammo = maxAmmo;
+        energy = maxEnergy;
     }
 
     public bool CanShoot()
     {
-        return ammo > 0;
+        return energy > 0;
     }
 
-    public int AmmoNum()
+    public int GetEnergy()
     {
-        return ammo;
-    }
-
-    public string AmmoInfo()
-    {
-        return ammo + "/" + maxAmmo;
+        return energy;
     }
 }

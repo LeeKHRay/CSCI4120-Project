@@ -17,7 +17,7 @@ public class Boss : Minion
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        weapon = GetComponent<Weapon>();
+        laserGun = GetComponent<LaserGun>();
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
 
@@ -74,11 +74,11 @@ public class Boss : Minion
                     animator.SetBool("Aiming", true);
                     transform.LookAt(target.position);
                     animator.SetTrigger("Shoot");
-                    weapon.Shoot();
+                    laserGun.Shoot();
                     yield return new WaitForSeconds(0.3f);
-                    weapon.Shoot();
+                    laserGun.Shoot();
                     yield return new WaitForSeconds(0.3f);
-                    weapon.Shoot();
+                    laserGun.Shoot();
                     yield return new WaitForSeconds(3.0f);
                     break;
 

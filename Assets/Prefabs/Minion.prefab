@@ -12709,7 +12709,7 @@ GameObject:
   - component: {fileID: 3348656219501666498}
   - component: {fileID: 3348656219501666520}
   - component: {fileID: 3348656219501666521}
-  - component: {fileID: 3348656219501666526}
+  - component: {fileID: 1890033093762578140}
   - component: {fileID: 757852160277635637}
   m_Layer: 0
   m_Name: Minion
@@ -12836,7 +12836,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 1536
---- !u!114 &3348656219501666526
+--- !u!114 &1890033093762578140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12845,14 +12845,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3350637900433275332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee0a0618da1e314480f7af2f8e2a2ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2310af1127598ea4489b0ccdfd997723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimingCam: {fileID: 0}
-  bullet: {fileID: 8307731900756775584, guid: 46c10f8b5c3d16c45accd8b7ab0f77fd, type: 3}
-  bulletPos: {fileID: 3348656217601195127}
+  laser: {fileID: 8307731900756775584, guid: 46c10f8b5c3d16c45accd8b7ab0f77fd, type: 3}
+  laserPos: {fileID: 3348656217601195127}
   shootForce: 150
-  maxAmmo: 20
+  maxEnergy: 20
   audioSource: {fileID: 5666175017725363623}
 --- !u!82 &757852160277635637
 AudioSource:

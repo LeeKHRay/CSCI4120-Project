@@ -11163,6 +11163,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1456643066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2192083894451972375, guid: 67aaf212bec957b47b1d7e619784dfd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 9003665200657236669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2310af1127598ea4489b0ccdfd997723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1493304115
 GameObject:
   m_ObjectHideFlags: 0
@@ -11592,7 +11604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3951985873354393796}
-  weapon: {fileID: 3951985873354393798}
+  laserGun: {fileID: 1456643066}
   lifePointBar: {fileID: 1030291957}
   laserEnergyBar: {fileID: 1846256081}
   energyCellImages:
@@ -13976,14 +13988,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 148624616167181860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee0a0618da1e314480f7af2f8e2a2ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2310af1127598ea4489b0ccdfd997723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimingCam: {fileID: 0}
-  bullet: {fileID: 8307731900756775584, guid: 46c10f8b5c3d16c45accd8b7ab0f77fd, type: 3}
-  bulletPos: {fileID: 3917882120988691825}
+  laser: {fileID: 8307731900756775584, guid: 46c10f8b5c3d16c45accd8b7ab0f77fd, type: 3}
+  laserPos: {fileID: 3917882120988691825}
   shootForce: 200
-  maxAmmo: 20
+  maxEnergy: 20
   audioSource: {fileID: 148624616167181931}
 --- !u!1 &148624616167181862
 GameObject:
@@ -34662,18 +34674,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12cc191090952064fa788c368ae6edfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3951985873354393798 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4038544890021940187, guid: 67aaf212bec957b47b1d7e619784dfd9,
-    type: 3}
-  m_PrefabInstance: {fileID: 9003665200657236669}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee0a0618da1e314480f7af2f8e2a2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &4944318774155417496
