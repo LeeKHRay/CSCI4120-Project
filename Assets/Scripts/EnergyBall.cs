@@ -67,18 +67,6 @@ public class EnergyBall : MonoBehaviour
             player.Damage(damage);
             player.AddForce(forceDir * explosiveForce);
         }
-        else if (collision.collider.tag == "Minion")
-        {
-            Minion minion = collision.collider.GetComponent<Minion>();
-            minion.Damage(damage);
-            minion.AddForce(forceDir * explosiveForce);
-        }
-        else if (collision.collider.tag == "Boss")
-        {
-            Boss boss = collision.collider.GetComponent<Boss>();
-            boss.Damage(damage);
-            boss.AddForce(forceDir * explosiveForce);
-        }
 
         Destroy(gameObject, 1.0f);
     }
