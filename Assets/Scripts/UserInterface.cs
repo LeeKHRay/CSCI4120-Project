@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour
@@ -76,5 +77,10 @@ public class UserInterface : MonoBehaviour
         {
             energy.color = colors[2];
         }
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("TheRebellionofRobotSoldier");
     }
 }

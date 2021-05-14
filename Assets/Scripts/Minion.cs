@@ -7,8 +7,8 @@ public class Minion : MonoBehaviour
 {
     public Transform bulletPos;
     public float rotationDamping = 6.0f;
-    public float viewDistance = 20.0f;
-    public float viewAngle = 120.0f;
+    public float attackDistance = 20.0f;
+    public float attackAngle = 120.0f;
     public int lifePoint = 100;
     public ParticleSystem explosion;
     public ParticleSystem smoke;
@@ -96,11 +96,11 @@ public class Minion : MonoBehaviour
 
     protected bool ScanPlayer(Vector3 heading)
     {
-        if (Vector3.Dot(heading.normalized, transform.forward) > Mathf.Cos(viewAngle / 2 * Mathf.Deg2Rad) && Vector3.Magnitude(heading) < viewDistance)
+        if (Vector3.Dot(heading.normalized, transform.forward) > Mathf.Cos(attackAngle / 2 * Mathf.Deg2Rad) && Vector3.Magnitude(heading) < attackDistance)
         {
-            Debug.DrawLine(bulletPos.position - heading.normalized, bulletPos.position - heading.normalized + heading.normalized * viewDistance, Color.red);
+            Debug.DrawLine(bulletPos.position - heading.normalized, bulletPos.position - heading.normalized + heading.normalized * attackDistance, Color.red);
             RaycastHit hit;
-            if (Physics.Raycast(bulletPos.position - heading.normalized, heading, out hit, viewDistance, ~ignoreLayer))
+            if (Physics.Raycast(bulletPos.position - heading.normalized, heading, out hit, attackDistance, ~ignoreLayer))
             {
                 if (hit.collider.tag.Equals("Player")) // check if there is no occluders
                 {

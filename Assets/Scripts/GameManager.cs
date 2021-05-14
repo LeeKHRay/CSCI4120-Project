@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerController player;
     public GameObject minionPrefab;
     public Transform[] spawnPoints;
     public Transform bossReturnPoint;
     public Boss boss;
+    public GameObject gameOverUI;
 
     private bool spawned = false;
     private bool bossInScene = true;
     private GameObject[] spawnedMinions;
     private ParticleSystem[][] particleSystems;
 
+    private bool isLose = false;
+
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         particleSystems = new ParticleSystem[spawnPoints.Length + 1][];
 
         particleSystems[0] = new ParticleSystem[2];
@@ -43,6 +49,13 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine("BossReturn");
             bossInScene = true;
+        }
+
+        if (player.lifePoint <= 0 && !isLose)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            isLose = true;
+            gameOverUI.SetActive(true);
         }
     }
 

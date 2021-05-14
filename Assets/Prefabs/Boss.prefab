@@ -11400,8 +11400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPos: {fileID: 7495241794853811053}
   rotationDamping: 6
-  viewDistance: 20
-  viewAngle: 120
+  attackDistance: 30
+  attackAngle: 120
   lifePoint: 500
   explosion: {fileID: 7495241793736690090}
   smoke: {fileID: 7495241794388685440}

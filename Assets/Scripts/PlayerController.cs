@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         laserGun = GetComponent<LaserGun>();
         audioSource = GetComponent<AudioSource>();
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -197,6 +195,12 @@ public class PlayerController : MonoBehaviour
         healingEffect.Play();
         for (int i = 0; i < 10; i++)
         {
+            // avoid healing after die
+            if (lifePoint <= 0)
+            {
+                yield break;
+            }
+
             if (lifePoint < maxLifePoint)
             {
                 lifePoint += 5;
