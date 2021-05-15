@@ -14484,7 +14484,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -21206,7 +21206,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8ac26ea70dd716b40b2b84933f0ab77d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -21258,7 +21258,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1
-  jumpForce: 500
+  jumpForce: 350
   speed: 5
   mainCam: {fileID: 5942069601054453818}
   aimingCam: {fileID: 5942069600237212737}

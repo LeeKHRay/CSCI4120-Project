@@ -23,10 +23,12 @@ public class BlackHole : MonoBehaviour
         explosion = transform.GetChild(1).GetComponent<VisualEffect>();
         audioSource = GetComponent<AudioSource>();
 
+        blackHole.playRate = 4f;
+
         StartCoroutine("Explode");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 heading = target.position - transform.position + target.up;
         playerController.AddForce(-heading.normalized * attractiveForce); // attract player

@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 public class EnergyBall : MonoBehaviour
 {
     public float movingSpeed = 8.0f;
-    public float rotateSpeed = 90.0f;
+    public float turningSpeed = 90.0f;
     public int damage = 20;
     public float explosiveForce = 5000.0f;
 
@@ -25,6 +25,8 @@ public class EnergyBall : MonoBehaviour
         explosion = transform.GetChild(1).GetComponent<VisualEffect>();
         audioSource = GetComponent<AudioSource>();
 
+        energy.playRate = 5f;
+
         transform.LookAt(target);
         currDir = transform.forward;
 
@@ -35,7 +37,7 @@ public class EnergyBall : MonoBehaviour
     {
         Vector3 heading = target.position - transform.position + target.up;
 
-        currDir = Vector3.RotateTowards(currDir, heading, rotateSpeed * Mathf.Deg2Rad * Time.deltaTime, 0f);
+        currDir = Vector3.RotateTowards(currDir, heading, turningSpeed * Mathf.Deg2Rad * Time.deltaTime, 0f);
         rigid.velocity = currDir.normalized * movingSpeed;
 
         energy.SetVector3("TrailsDirection", -currDir.normalized); // produce tail

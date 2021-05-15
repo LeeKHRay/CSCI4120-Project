@@ -12756,7 +12756,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d22b0196a0c2a6d47a52dff5c34333fb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -12828,8 +12828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPos: {fileID: 3348656217601195127}
   rotationDamping: 6
-  viewDistance: 20
-  viewAngle: 120
+  attackDistance: 20
+  attackAngle: 120
   lifePoint: 30
   explosion: {fileID: 780680500449687765}
   smoke: {fileID: 2320933163835372377}

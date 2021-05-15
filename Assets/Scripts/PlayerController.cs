@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
             {
                 animator.SetBool("Grounded", true);
-                animator.applyRootMotion = true;
             }
             else
             {
@@ -78,11 +77,18 @@ public class PlayerController : MonoBehaviour
                 energyCellNum--;
                 StartCoroutine("Recharge");
             }
+
+            // jump
+            if (animator.GetBool("Grounded") && Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("Jump");
+                thruster.Play();
+                rb.AddForce(Vector3.up * jumpForce);
+            }
         }        
     }
 
-    // use FixedUpdate() for Physics calculations
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (lifePoint > 0)
         {
@@ -100,13 +106,6 @@ public class PlayerController : MonoBehaviour
 
             SetAimingCameraAngle(aimingCam.transform.eulerAngles.x - 80 * y * Time.fixedDeltaTime);
 
-            // jump
-            if (animator.GetBool("Grounded") && Input.GetKeyDown(KeyCode.Space))
-            {
-                animator.SetTrigger("Jump");
-                thruster.Play();
-                rb.AddForce(Vector3.up * jumpForce);
-            }
         }
     }
 

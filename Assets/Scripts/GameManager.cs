@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         particleSystems = new ParticleSystem[spawnPoints.Length + 1][];
 
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         if (player.lifePoint <= 0 && !isLose)
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             isLose = true;
             gameOverUI.SetActive(true);
         }
