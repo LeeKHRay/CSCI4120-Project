@@ -19,9 +19,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: 926
-    y: 22
+    y: 31
     width: 2372
-    height: 2802
+    height: 2791
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1764,7 +1764,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 36
           m_Value: {x: 2, y: 3, z: 2}
         - m_ExpressionIndex: 38
-          m_Value: {x: 2, y: 2, z: 2}
+          m_Value: {x: 5, y: 1, z: 5}
         - m_ExpressionIndex: 39
           m_Value: {x: 0, y: 0, z: 0}
       m_Vector4f:
@@ -2583,7 +2583,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614560}
   - {fileID: 8926484042661614564}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614559}
   m_MasterData:
@@ -2592,7 +2592,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":2.0,"y":2.0,"z":2.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":5.0,"y":1.0,"z":5.0}}'
     m_Space: 0
   m_Property:
     name: bounds
@@ -5835,7 +5835,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615835}
-  m_UIPosition: {x: 2871, y: 22}
+  m_UIPosition: {x: 2873, y: 31}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -5969,7 +5969,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615839}
   - {fileID: 8926484042661615843}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661615838}
   m_MasterData:
