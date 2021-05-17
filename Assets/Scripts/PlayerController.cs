@@ -17,12 +17,18 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem smoke;
     public ParticleSystem healingEffect;
 
+    public bool canMove = true;
+    public string itemName = "";
+    public int itemNum = 0;
+
     private int maxLifePoint;
     private Rigidbody rb;
     private Animator animator;
     private LaserGun laserGun;
     private AudioSource audioSource;
     private bool isRecharging = false;
+
+    private IInteractableObject interactableObject = null;
 
     void Start()
     {
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (lifePoint > 0)
+        if (canMove && lifePoint > 0)
         {
             if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, groundDistance, whatIsGround))
             {
@@ -85,12 +91,18 @@ public class PlayerController : MonoBehaviour
                 thruster.Play();
                 rb.AddForce(Vector3.up * jumpForce);
             }
-        }        
+        }
+
+        // interact with object
+        if (interactableObject != null && Input.GetKeyDown(KeyCode.E))
+        {
+            interactableObject.Interact(this);
+        }
     }
 
     void LateUpdate()
     {
-        if (lifePoint > 0)
+        if (canMove && lifePoint > 0)
         {
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
@@ -212,6 +224,57 @@ public class PlayerController : MonoBehaviour
     public void AddForce(Vector3 force)
     {
         rb.AddForce(force);
+    }
+
+    public void GetItem(Item item, bool setNull)
+    {
+        if (setNull) // avoid take item again
+        {
+            interactableObject = null;
+        }
+        itemName = item.itemName;
+        itemNum++;
+    }
+
+    public void PutItem()
+    {
+        itemNum--;
+        if (itemNum == 0)
+        {
+            itemName = "";
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("enter " + other.name);
+
+        if (other.name == "PasswordPanel")
+        {
+            interactableObject = (IInteractableObject) other.GetComponent<PasswordPanel>();
+        }
+        else if (other.tag == "ChargePlatform")
+        {
+            interactableObject = (IInteractableObject) other.GetComponent<ChargePlatform>();
+        }
+        else if (other.name == "ColorSwitcher")
+        {
+            interactableObject = (IInteractableObject) other.GetComponent<ColorSwitcher>();
+        }
+        else if (other.name == "ColorPasswordPanel")
+        {
+            interactableObject = (IInteractableObject) other.GetComponent<ColorPasswordPanel>();
+        }
+        else if (other.tag == "Battery")
+        {
+            interactableObject = (IInteractableObject) other.GetComponent<Item>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("exit " + other.name);
+
+        interactableObject = null;
     }
 
     void OnCollisionEnter(Collision collision)

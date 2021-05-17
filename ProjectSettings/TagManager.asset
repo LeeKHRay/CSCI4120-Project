@@ -8,6 +8,8 @@ TagManager:
   - Minion
   - Boss
   - Shield
+  - ChargePlatform
+  - Battery
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Player Bullet
   - Enemy Bullet
   - Shield
-  - 
-  - 
+  - ItemTrigger
+  - Item
   - 
   - 
   - 

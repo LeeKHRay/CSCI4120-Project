@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerController player;
+    public ReferencesScriptableObject references;
+
     public GameObject minionPrefab;
     public Transform[] spawnPoints;
     public Transform bossReturnPoint;
     public Boss boss;
     public GameObject gameOverUI;
 
+    private PlayerController player;
     private bool spawned = false;
     private bool bossInScene = true;
     private GameObject[] spawnedMinions;
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        player = references.Player.GetComponent<PlayerController>();
 
         particleSystems = new ParticleSystem[spawnPoints.Length + 1][];
 

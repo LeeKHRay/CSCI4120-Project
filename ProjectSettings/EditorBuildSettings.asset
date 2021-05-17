@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TheRebellionofRobotSoldier.unity
+    guid: 57c327b819115a94bb3cf2dcfd7f87fd
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: b15db5775b4974b4caac0a178a42adbc
   m_configObjects: {}
