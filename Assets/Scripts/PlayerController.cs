@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
+    public bool canMove = true;
     public float groundDistance = 0.3f;
     public LayerMask whatIsGround;
     public float jumpForce = 200;
@@ -10,16 +11,13 @@ public class PlayerController : MonoBehaviour
     public Transform mainCam;
     public Transform aimingCam;
     public GameObject crosshair;
+    public Inventory inventory;
     public int lifePoint = 500;
     public int energyCellNum = 3;
     public ParticleSystem thruster;
     public ParticleSystem explosion;
     public ParticleSystem smoke;
     public ParticleSystem healingEffect;
-
-    public bool canMove = true;
-    public string itemName = "";
-    public int itemNum = 0;
 
     private int maxLifePoint;
     private Rigidbody rb;
@@ -29,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isRecharging = false;
 
     private IInteractableObject interactableObject = null;
+    private IInventoryItem inventoryItem = null;
 
     void Start()
     {
@@ -55,7 +54,16 @@ public class PlayerController : MonoBehaviour
             // aiming
             if (Input.GetMouseButtonDown(1))
             {
-                SetAimingCameraAngle(0); // reset aiming camera angle
+                float angle = mainCam.eulerAngles.x;
+                if (angle < 16)
+                {
+                    angle = 20 * angle / 15;
+                }
+                else if (angle > 349)
+                {
+                    angle = -20 * (360 - angle) / 10;
+                }
+                SetAimingCameraAngle(angle); // reset aiming camera angle
             }
             if (Input.GetMouseButton(1))
             {
@@ -68,6 +76,19 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("Aiming", false);
                 speed = 5.0f;
                 SwitchCamera();
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                float angle = aimingCam.eulerAngles.x;
+                if (angle < 21)
+                {
+                    angle = 15 * angle / 20;
+                }
+                else if (angle > 339)
+                {
+                    angle = -10 * (360 - angle) / 20;
+                }
+                SetMainCameraAngle(angle);
             }
 
             // shoot
@@ -93,10 +114,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // interact with object
-        if (interactableObject != null && Input.GetKeyDown(KeyCode.E))
+        // interact with object or pickup item
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            interactableObject.Interact(this);
+            if (interactableObject != null)
+            {
+                interactableObject.Interact(this);
+            }
+            else if (inventoryItem != null)
+            {
+                Debug.Log("inventoryItem");
+                inventoryItem.PickUp(inventory);
+                inventoryItem = null;
+            }
+        }
+
+        // use item
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            inventory.UseItem(interactableObject);
         }
     }
 
@@ -116,8 +152,16 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(v * camForward + h * mainCam.right, 1f) * speed + transform.up * rb.velocity.y;
             rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 80 * x * Time.fixedDeltaTime, 0));
 
-            SetAimingCameraAngle(aimingCam.transform.eulerAngles.x - 80 * y * Time.fixedDeltaTime);
+            SetMainCameraAngle(mainCam.eulerAngles.x - 80 * y * Time.fixedDeltaTime);
+            SetAimingCameraAngle(aimingCam.eulerAngles.x - 80 * y * Time.fixedDeltaTime);
 
+        }
+        else if (!canMove)
+        {
+            animator.SetFloat("ZSpeed", 0);
+            animator.SetFloat("XSpeed", 0);
+            animator.SetFloat("TurningSpeed", 0);
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -147,9 +191,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetMainCameraAngle(float angle)
+    {
+        Vector3 rotation = mainCam.eulerAngles;
+        rotation.x = angle;
+        if (rotation.x > 15 && rotation.x < 180)
+        {
+            rotation.x = 15;
+        }
+        else if (rotation.x < 350 && rotation.x > 180)
+        {
+            rotation.x = 350;
+        }
+        mainCam.eulerAngles = rotation;
+    }
+
     private void SetAimingCameraAngle(float angle)
     {
-        Vector3 rotation = aimingCam.transform.eulerAngles;
+        Vector3 rotation = aimingCam.eulerAngles;
         rotation.x = angle;
         if (rotation.x > 20 && rotation.x < 180)
         {
@@ -159,7 +218,7 @@ public class PlayerController : MonoBehaviour
         {
             rotation.x = 340;
         }
-        aimingCam.transform.eulerAngles = rotation;
+        aimingCam.eulerAngles = rotation;
     }
 
     public void Damage(int damage)
@@ -226,55 +285,38 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(force);
     }
 
-    public void GetItem(Item item, bool setNull)
+    private void OnTriggerEnter(Collider other)
     {
-        if (setNull) // avoid take item again
+        IInteractableObject obj = other.GetComponent<IInteractableObject>();
+        if (obj != null)
+        {
+            interactableObject = obj;
+        }
+        else
+        {
+            IInventoryItem item = other.GetComponent<IInventoryItem>();
+            if (item != null)
+            {
+                inventoryItem = item;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        IInteractableObject obj = other.GetComponent<IInteractableObject>();
+        if (obj != null)
         {
             interactableObject = null;
         }
-        itemName = item.itemName;
-        itemNum++;
-    }
-
-    public void PutItem()
-    {
-        itemNum--;
-        if (itemNum == 0)
+        else
         {
-            itemName = "";
+            IInventoryItem item = other.GetComponent<IInventoryItem>();
+            if (item != null)
+            {
+                inventoryItem = null;
+            }
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("enter " + other.name);
-
-        if (other.name == "PasswordPanel")
-        {
-            interactableObject = (IInteractableObject) other.GetComponent<PasswordPanel>();
-        }
-        else if (other.tag == "ChargePlatform")
-        {
-            interactableObject = (IInteractableObject) other.GetComponent<ChargePlatform>();
-        }
-        else if (other.name == "ColorSwitcher")
-        {
-            interactableObject = (IInteractableObject) other.GetComponent<ColorSwitcher>();
-        }
-        else if (other.name == "ColorPasswordPanel")
-        {
-            interactableObject = (IInteractableObject) other.GetComponent<ColorPasswordPanel>();
-        }
-        else if (other.tag == "Battery")
-        {
-            interactableObject = (IInteractableObject) other.GetComponent<Item>();
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("exit " + other.name);
-
-        interactableObject = null;
     }
 
     void OnCollisionEnter(Collision collision)

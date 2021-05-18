@@ -78,9 +78,4 @@ public class UserInterface : MonoBehaviour
             energy.color = colors[2];
         }
     }
-
-    public void Retry()
-    {
-        SceneManager.LoadScene("TheRebellionofRobotSoldier");
-    }
 }

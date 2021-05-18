@@ -16,9 +16,11 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
     public GameObject inputRecord;
     public Transform inputHistory;
 
-    public GameObject wall;
+    public GameObject[] walls;
     public GameObject bridge;
+    public Animator animator;
 
+    private PlayerController player;
     private int[] digits = new int[] { 0, 0, 0, 0 };
     private int[] password = new int[4];
     private bool[] correctDigit = new bool[] { false, false, false, false };
@@ -35,6 +37,7 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
     {
         if (!hacked && chargePlatform.charged)
         {
+            this.player = player;
             player.canMove = panelOpened;
 
             // open password panel
@@ -87,13 +90,17 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
                 inputs[i].color = Color.green;
             }
 
+            player.canMove = true;
             panelOpened = false;
             passwordPanel.SetActive(panelOpened);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = panelOpened;
 
+            animator.SetBool("Rise", false);
             bridge.SetActive(true);
-            wall.SetActive(false);
+            walls[0].SetActive(false);
+            walls[1].SetActive(false);
+
         }
         else
         {

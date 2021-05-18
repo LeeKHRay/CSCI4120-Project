@@ -18,6 +18,11 @@ public class Door : MonoBehaviour
         animator.SetBool("Open", true);
     }
 
+    public void Close()
+    {
+        animator.SetBool("Open", false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (auto)

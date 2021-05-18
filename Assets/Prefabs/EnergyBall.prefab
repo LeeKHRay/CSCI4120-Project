@@ -268,9 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingSpeed: 8
-  rotateSpeed: 90
+  turningSpeed: 90
   damage: 20
-  explosiveForce: 5000
+  explosiveForce: 250
 --- !u!82 &4550474676706157846
 AudioSource:
   m_ObjectHideFlags: 0

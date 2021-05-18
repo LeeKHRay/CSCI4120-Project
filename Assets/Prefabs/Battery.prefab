@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &377236591
+--- !u!114 &3020552658543325908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7862817981146805422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c08e92e5c1898246a04986683564329, type: 3}
+  m_Script: {fileID: 11500000, guid: a7ebdd1607ea75d42b51c6ddd5f44717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Battery
+  itemTexture: {fileID: 8400000, guid: d8cf8026dbc7c414693d2ad92e6821b4, type: 2}
 --- !u!1001 &7862817981146712192
 PrefabInstance:
   m_ObjectHideFlags: 0

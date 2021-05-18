@@ -8,56 +8,45 @@ public class ChargePlatform : MonoBehaviour, IInteractableObject
     public bool charged = false;
     public bool smallChargePlatformr = true;
 
+    private Light light;
     private int batteryNum = 0;
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        light = GetComponent<Light>();
     }
 
     public void Interact(PlayerController player)
     {
         if (smallChargePlatformr)
         {
-            if (player.itemName.Equals("Battery") && player.itemNum > 0)
+            if (charged)
             {
-                charged = !charged;
-                if (charged)
-                {
-                    battery[0].SetActive(true);
-                    player.PutItem();
-                }
-                else
-                {
-                    player.GetItem(battery[0].GetComponent<Item>(), false);
-                    battery[0].SetActive(false);
-                }
-            }
-            else if (charged) // take away battery
-            {
+                Debug.Log("collect");
                 charged = false;
-                player.GetItem(battery[0].GetComponent<Item>(), false);
-                battery[0].SetActive(false);
+                battery[0].GetComponent<Battery>().PickUp(player.inventory);
+                light.enabled = false;
             }
+        }
+    }
+
+    public void PlaceBattery()
+    {
+        if (smallChargePlatformr)
+        {
+            charged = true;
+            battery[0].SetActive(true);
+            light.enabled = true;
         }
         else if (!charged) // big charge platform
         {
-            if (player.itemName.Equals("Battery") && player.itemNum > 0)
-            {
-                battery[batteryNum].SetActive(true);
-                batteryNum++;
-                player.PutItem();
+            battery[batteryNum].SetActive(true);
+            batteryNum++;
 
-                if (batteryNum == 4)
-                {
-                    charged = true;
-                }
+            if (batteryNum == 4)
+            {
+                charged = true;
+                light.enabled = true;
             }
         }
     }
