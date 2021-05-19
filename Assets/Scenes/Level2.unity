@@ -8823,7 +8823,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b015ccb356af454f94a899bf8d37d7d, type: 2}
+  - {fileID: 2100000, guid: a7fbe566e0de0dc41bcb10c767d9cbf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11197,7 +11197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b015ccb356af454f94a899bf8d37d7d, type: 2}
+  - {fileID: 2100000, guid: a7fbe566e0de0dc41bcb10c767d9cbf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18139,7 +18139,7 @@ MonoBehaviour:
   battery:
   - {fileID: 1422588881}
   charged: 0
-  smallChargePlatformr: 1
+  bigChargePlatform: 0
 --- !u!108 &1226798957
 Light:
   m_ObjectHideFlags: 0
@@ -24811,7 +24811,7 @@ MonoBehaviour:
   battery:
   - {fileID: 101437315}
   charged: 0
-  smallChargePlatformr: 1
+  bigChargePlatform: 0
 --- !u!108 &1649210085
 Light:
   m_ObjectHideFlags: 0
@@ -26573,7 +26573,7 @@ MonoBehaviour:
   - {fileID: 275761728}
   - {fileID: 1126845487}
   charged: 0
-  smallChargePlatformr: 0
+  bigChargePlatform: 1
 --- !u!108 &1787674134
 Light:
   m_ObjectHideFlags: 0

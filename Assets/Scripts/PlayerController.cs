@@ -29,6 +29,15 @@ public class PlayerController : MonoBehaviour
     private IInteractableObject interactableObject = null;
     private IInventoryItem inventoryItem = null;
 
+    public GameObject interact;
+    public GameObject Puzzle1;
+    public GameObject Puzzle2;
+    public GameObject Puzzle3;
+    public GameObject Puzzle4;
+    public GameObject Hint1;
+    public GameObject Hint2;
+    public GameObject Hint3;
+
     void Start()
     {
         maxLifePoint = lifePoint;
@@ -318,9 +327,68 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay(Collider collider)
+    {
+        // Debug.Log("In");
+        if (Input.GetKeyDown("e") && collider.gameObject.tag == "Puzzle1")
+        {
+            Puzzle1.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Puzzle2")
+        {
+            Puzzle2.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Puzzle3")
+        {
+            Puzzle3.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Puzzle4")
+        {
+            Puzzle4.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Hint1")
+        {
+            Hint1.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Hint2")
+        {
+            Hint2.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e") && collider.gameObject.tag == "Hint3")
+        {
+            Hint3.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetKeyDown("e"))  // can be e
+        {
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            collider.gameObject.GetComponent<ItemPickUp>().Pickup(interact);
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-
+        if (collision.gameObject.tag == "Special")
+        {
+            interact = collision.gameObject;
+        }
+        else if (collision.gameObject.tag == "DeathFloor")
+        {
+            Damage(lifePoint);
+        }
     }
 }

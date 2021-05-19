@@ -14,6 +14,8 @@ public class Minion : MonoBehaviour
     public ParticleSystem smoke;
     public LayerMask ignoreLayer;
 
+    public bool isDead = false;
+
     protected Animator animator;
     protected Rigidbody rb;
     protected LaserGun laserGun;
@@ -151,6 +153,7 @@ public class Minion : MonoBehaviour
         animator.SetLayerWeight(2, 0);
         agent.isStopped = true;
         animator.SetTrigger("Dead");
+        isDead = true;
         yield return new WaitForSeconds(1.0f);
         explosion.Play();
         smoke.Play();

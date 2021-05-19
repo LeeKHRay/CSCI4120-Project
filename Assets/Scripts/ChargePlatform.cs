@@ -6,7 +6,7 @@ public class ChargePlatform : MonoBehaviour, IInteractableObject
 {
     public GameObject[] battery;
     public bool charged = false;
-    public bool smallChargePlatformr = true;
+    public bool bigChargePlatform = false;
 
     private Light light;
     private int batteryNum = 0;
@@ -18,11 +18,10 @@ public class ChargePlatform : MonoBehaviour, IInteractableObject
 
     public void Interact(PlayerController player)
     {
-        if (smallChargePlatformr)
+        if (!bigChargePlatform)
         {
             if (charged)
             {
-                Debug.Log("collect");
                 charged = false;
                 battery[0].GetComponent<Battery>().PickUp(player.inventory);
                 light.enabled = false;
@@ -32,7 +31,7 @@ public class ChargePlatform : MonoBehaviour, IInteractableObject
 
     public void PlaceBattery()
     {
-        if (smallChargePlatformr)
+        if (!bigChargePlatform)
         {
             charged = true;
             battery[0].SetActive(true);
