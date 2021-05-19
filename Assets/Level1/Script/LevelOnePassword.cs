@@ -17,6 +17,8 @@ public class LevelOnePassword : MonoBehaviour
     public int[] password = new int[] { 8, 3, 5, 1 };
     private bool pass = false;
 
+    private bool first = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,8 +63,9 @@ public class LevelOnePassword : MonoBehaviour
 
     public void Enter()
     {
-        if (Enumerable.SequenceEqual(digits, password))
+        if (Enumerable.SequenceEqual(digits, password) && first)
         {
+            first = false;
             pass = true;
             if (nt != null)
                 nt.Open();

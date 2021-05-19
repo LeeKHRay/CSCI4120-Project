@@ -11,7 +11,6 @@ public class MovingLaser : MonoBehaviour
     private Vector3 endPosition;
     private Rigidbody rBody;
 
-    private GameObject target = null;
     private Vector3 offset;
 
     public ParticleSystem spark;
@@ -24,7 +23,6 @@ public class MovingLaser : MonoBehaviour
         startPosition = platformPathStart.transform.position;
         endPosition = platformPathEnd.transform.position;
         StartCoroutine(Vector3LerpCoroutine(gameObject, endPosition, speed));
-        target = null;
     }
 
     // Update is called once per frame

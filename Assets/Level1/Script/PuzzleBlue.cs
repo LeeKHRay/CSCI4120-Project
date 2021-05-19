@@ -10,6 +10,7 @@ public class PuzzleBlue : MonoBehaviour
     public GameObject parent;
     private bool gameEnd = false;
     public LevelOneDoor access;
+    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,12 @@ public class PuzzleBlue : MonoBehaviour
 
     IEnumerator TerminateGame()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         access.Open();
         CloseUI();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        player.canMove = true;
     }
 
     bool CheckEnd()

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private IInteractableObject interactableObject = null;
     private IInventoryItem inventoryItem = null;
 
+    /*
     public GameObject interact;
     public GameObject Puzzle1;
     public GameObject Puzzle2;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Hint1;
     public GameObject Hint2;
     public GameObject Hint3;
+    */
 
     void Start()
     {
@@ -327,6 +329,8 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /*
     private void OnTriggerStay(Collider collider)
     {
         // Debug.Log("In");
@@ -379,16 +383,13 @@ public class PlayerController : MonoBehaviour
             collider.gameObject.GetComponent<ItemPickUp>().Pickup(interact);
         }
     }
+    */
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Special")
-        {
-            interact = collision.gameObject;
-        }
-        else if (collision.gameObject.tag == "DeathFloor")
-        {
+       if (collision.gameObject.tag == "DeathFloor")
+       {
             Damage(lifePoint);
-        }
+       }
     }
 }

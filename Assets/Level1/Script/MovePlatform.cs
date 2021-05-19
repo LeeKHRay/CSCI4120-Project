@@ -11,7 +11,6 @@ public class MovePlatform : MonoBehaviour
     private Vector3 endPosition;
     private Rigidbody rBody;
 
-    private GameObject target = null;
     private Vector3 prevPos;
     private bool playerOnTop;
     private Transform player;
@@ -25,7 +24,6 @@ public class MovePlatform : MonoBehaviour
         startPosition = platformPathStart.transform.position;
         endPosition = platformPathEnd.transform.position;
         StartCoroutine(Vector3LerpCoroutine(endPosition, speed));
-        target = null;
     }
 
     void Update()

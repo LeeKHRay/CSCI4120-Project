@@ -8,6 +8,7 @@ public class PuzzlePic : MonoBehaviour
     public GameObject wintext;
 
     public static bool gamewin;
+    private bool first = true;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +36,10 @@ public class PuzzlePic : MonoBehaviour
     void Update()
     {
         gamewin = CheckWin();
-        if (wintext != null && gamewin)
+        if (wintext != null && gamewin && first)
         {
             wintext.SetActive(true);
+            first = false;
         }
         
     }

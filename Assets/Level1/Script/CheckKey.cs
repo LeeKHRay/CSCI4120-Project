@@ -18,6 +18,10 @@ public class CheckKey : MonoBehaviour
     {
         if (CheckAns())
         {
+            for (int i = 0; i < save.Length; i++)
+            {
+                save[i].GetComponent<KeyPlacer>().finished = true;
+            }
             exit.Open();
         }
     }
@@ -26,7 +30,7 @@ public class CheckKey : MonoBehaviour
     {
         for (int i = 0; i < save.Length; i++)
         {
-            if (!save[i].GetComponent<AcceptItem>().correct)
+            if (!save[i].GetComponent<KeyPlacer>().correct)
             {
                 return false;
             }
