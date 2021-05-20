@@ -113,6 +113,11 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce);
             }
         }
+        else
+        {
+            animator.SetBool("Aiming", false);
+            SwitchCamera();
+        }
 
         // interact with object or pickup item
         if (Input.GetKeyDown(KeyCode.E))

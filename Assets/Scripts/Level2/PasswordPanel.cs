@@ -59,7 +59,7 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
                 digits[idx] = 0;
             }
             inputs[idx].text = digits[idx] + "";
-            inputs[idx].color = Color.black;
+            inputs[idx].color = Color.white;
         }
     }
 
@@ -74,7 +74,7 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
                 digits[idx] = 9;
             }
             inputs[idx].text = digits[idx] + "";
-            inputs[idx].color = Color.black;
+            inputs[idx].color = Color.white;
         }
     }
 
@@ -90,17 +90,7 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
                 inputs[i].color = Color.green;
             }
 
-            player.canMove = true;
-            panelOpened = false;
-            passwordPanel.SetActive(panelOpened);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = panelOpened;
-
-            animator.SetBool("Rise", false);
-            bridge.SetActive(true);
-            walls[0].SetActive(false);
-            walls[1].SetActive(false);
-
+            StartCoroutine("CreateBridge");
         }
         else
         {
@@ -188,7 +178,7 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
         for (int i = 0; i < 4; i++)
         {
             inputs[i].text = "0";
-            inputs[i].color = Color.black;
+            inputs[i].color = Color.white;
         }
         digits = new int[] { 0, 0, 0, 0 };
         correctDigit = new bool[] { false, false, false, false };
@@ -200,5 +190,28 @@ public class PasswordPanel : MonoBehaviour, IInteractableObject
         {
             Destroy(record.gameObject);
         }
+    }
+
+    IEnumerator CreateBridge()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        CloseUI();
+
+        animator.SetBool("Rise", false);
+        bridge.SetActive(true);
+        walls[0].SetActive(false);
+        walls[1].SetActive(false);
+    }
+
+
+    public void CloseUI()
+    {
+        player.canMove = true;
+
+        panelOpened = false;
+        passwordPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

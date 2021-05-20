@@ -37,7 +37,6 @@ public class LevelOnePassword : MonoBehaviour
                 digits[idx] = 0;
             }
             inputs[idx].text = digits[idx] + "";
-            inputs[idx].color = Color.black;
         }
     }
 
@@ -52,7 +51,6 @@ public class LevelOnePassword : MonoBehaviour
                 digits[idx] = 9;
             }
             inputs[idx].text = digits[idx] + "";
-            inputs[idx].color = Color.black;
         }
     }
 

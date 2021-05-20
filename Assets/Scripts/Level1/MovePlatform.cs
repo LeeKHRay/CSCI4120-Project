@@ -59,16 +59,20 @@ public class MovePlatform : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        playerOnTop = true;
-        //col.gameObject.transform.SetParent(gameObject.transform, true);
+        if (col.tag == "Player")
+        {
+            playerOnTop = true;
+        }
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
-        playerOnTop = false;
-        //col.gameObject.transform.parent = null;
+        if (col.tag == "Player")
+        {
+            playerOnTop = false;
+        }
     }
 
 }

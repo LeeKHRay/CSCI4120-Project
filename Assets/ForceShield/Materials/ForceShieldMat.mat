@@ -30,7 +30,7 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fe290365d9c8a0a40bcb5b87e83fbd46, type: 3}
         m_Scale: {x: 3, y: 2}
-        m_Offset: {x: 4.4509187, y: 0}
+        m_Offset: {x: 8.849888, y: 0}
     - _Normal:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,7 +67,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _HitColor: {r: 0.6901961, g: 1, b: 0, a: 1}
-    - _HitPosition: {r: -0.048533972, g: 0.024002409, b: 0.48699918, a: 0}
+    - _HitPosition: {r: 0.027093697, g: 0.04164634, b: 0.48747477, a: 0}
     - _IntersectColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShieldPatternColor: {r: 0.6894454, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

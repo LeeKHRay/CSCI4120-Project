@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public Transform bossReturnPoint;
     public Boss boss;
     public GameObject[] minions;
-    public GameObject gameOverUI;
+    public GameObject gameOverMenu;
+    public GameObject winMenu;
     public Door door;
 
     private bool spawned = false;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private ParticleSystem[][] particleSystems;
 
     private bool isLose = false;
+    private bool bossDead = false;
 
     void Awake()
     {
@@ -68,10 +70,13 @@ public class GameManager : MonoBehaviour
 
         if (player.lifePoint <= 0 && !isLose)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            isLose = true;
-            gameOverUI.SetActive(true);
+            ShowGameOverMenu();
+        }
+
+        if (boss.lifePoint <= 0 && !bossDead)
+        {
+            player.canMove = false;
+            ShowWinMenu();
         }
     }
 
@@ -138,13 +143,28 @@ public class GameManager : MonoBehaviour
         minions[1].SetActive(true);
     }
 
+    private void ShowGameOverMenu()
+    {
+        isLose = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameOverMenu.SetActive(true);
+    }
+
+    private void ShowWinMenu()
+    {
+        bossDead = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        winMenu.SetActive(true);
+    }
+
     public void Retry()
     {
         SceneManager.LoadScene("Level3");
 #if UNITY_EDITOR
-        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level1"));
+        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
 #endif
     }
 
