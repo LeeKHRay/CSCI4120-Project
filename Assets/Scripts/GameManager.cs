@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 #if !UNITY_EDITOR
+        SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("Level2", LoadSceneMode.Additive);
 #endif
     }
@@ -140,6 +141,11 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Level3");
+#if UNITY_EDITOR
+        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level1"));
+#endif
     }
 
     private void OnTriggerEnter(Collider other)
@@ -147,11 +153,10 @@ public class GameManager : MonoBehaviour
         if (other.tag == "Player")
         {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level3"));
+            SceneManager.UnloadSceneAsync("Level1");
             SceneManager.UnloadSceneAsync("Level2");
             door.auto = false;
             door.Close();
-
-            player.transform.Find("Trigger").gameObject.SetActive(false);
 
             StartCoroutine("SpawnEnemies");
             Destroy(GetComponent<Collider>());

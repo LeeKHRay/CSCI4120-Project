@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour, IInventoryItem
 {
-    public string itemName;
     public Texture itemTexture;    
 
     public void PickUp(Inventory inventory)

@@ -12811,7 +12811,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.35
+  m_BaseOffset: -0.12
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3348656219501666521
@@ -12836,6 +12836,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 1536
+  isDead: 0
 --- !u!114 &1890033093762578140
 MonoBehaviour:
   m_ObjectHideFlags: 0

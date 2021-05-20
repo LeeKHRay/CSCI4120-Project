@@ -11383,7 +11383,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.3
+  m_BaseOffset: -0.05
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6650526894989553717
@@ -11408,6 +11408,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 1536
+  isDead: 0
   energyBallCannon: {fileID: 3018778577538533306}
   blackHoleCannon: {fileID: 4788477557535939555}
   teleport:

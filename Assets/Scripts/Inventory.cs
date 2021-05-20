@@ -72,7 +72,6 @@ public class Inventory : MonoBehaviour
             }
             coroutine = MoveInventory(true);
             StartCoroutine(coroutine);
-            //transform.position += new Vector3(-200, 0, 0);
         }
     }
 
