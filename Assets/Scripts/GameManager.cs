@@ -28,10 +28,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-#if !UNITY_EDITOR
         SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("Level2", LoadSceneMode.Additive);
-#endif
     }
 
     void Start()
@@ -162,10 +160,15 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Level3");
-#if UNITY_EDITOR
-        SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
-#endif
+        /*#if UNITY_EDITOR
+                SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+        #endif*/
+    }
+
+    public void Return()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 
     private void OnTriggerEnter(Collider other)
