@@ -94,17 +94,20 @@ public class PuzzleColor : MonoBehaviour
 
     public void ResetAll()
     {
-        for (int i = 0; i < 4; i++)
+        if (!gameEnd)
         {
-            for (int j = 0; j < 4; j++)
+            for (int i = 0; i < 4; i++)
             {
-                int ans = i * 4 + j;
-                ColorBlock colors = controls[ans].colors;
-                colors.normalColor = Color.white;
-                colors.highlightedColor = new Color32(225, 225, 225, 255);
-                colors.selectedColor = Color.white;
-                controls[ans].colors = colors;
-                status[ans] = false;
+                for (int j = 0; j < 4; j++)
+                {
+                    int ans = i * 4 + j;
+                    ColorBlock colors = controls[ans].colors;
+                    colors.normalColor = Color.white;
+                    colors.highlightedColor = new Color32(225, 225, 225, 255);
+                    colors.selectedColor = Color.white;
+                    controls[ans].colors = colors;
+                    status[ans] = false;
+                }
             }
         }
     }
